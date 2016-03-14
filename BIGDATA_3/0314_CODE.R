@@ -185,8 +185,7 @@ for(i in 1:nrow(NBA1415)){
 
 #test0314
 for(i in 1:nrow(NBA1415)){
-  if(NBA1415(i,"TotalPoints")>1500 &
-     NBA1415[i,"GamesPlayed"]>70){
+  if(NBA1415[i,"TotalPoints"]>1500 & NBA1415[i,"GamesPlayed"]>70){
     print(NBA1415[i,c("Name","Team","Position")])
   }
 }
