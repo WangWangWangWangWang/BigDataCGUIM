@@ -31,6 +31,26 @@ head(NBA1415)
 nrow(NBA1415)
 ncol(NBA1415)
 
+#HW3.3
+MaxTime<-aggregate(TotalMinutesPlayed~Team,NBA1415,max)
+MaxPoint<-aggregate(TotalPoints~Team,NBA1415,max)
+#tapply(NBA1415$TotalMinutesPlayed,NBA1415$Team,max)
+NBA1415MaxTime<-merge(NBA1415,MaxTime)
+NBA1415MaxPoint<-merge(NBA1415,MaxPoint)
+NBA1415MAXefficiency<-merge(NBA1415,MaxPoint/MaxTime)
+output<-NBA1415MAXefficiency[order(NBA1415MAXefficiency$TotalPoints/TotalMinutesPlayed,decreasing = T),c("Team","Name","TotalEfficiency")]
+library(knitr)
+kable(output, digits=2)
+
+#HW3.1
+MaxTime<-aggregate(TotalMinutesPlayed~Team,NBA1415,max)
+#tapply(NBA1415$TotalMinutesPlayed,NBA1415$Team,max)
+NBA1415MaxTime<-merge(NBA1415,MaxTime)
+output<-NBA1415MaxTime[order(NBA1415MaxTime$TotalMinutesPlayed,decreasing = T),c("Team","Name","TotalMinutesPlayed")]
+library(knitr)
+kable(output, digits=2)
+
+
 #17
 x16<-as.Date("1970-01-01")
 x16
